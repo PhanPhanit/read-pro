@@ -1,10 +1,13 @@
-package com.project.read_pro;
+package com.project.read_pro.Fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.project.read_pro.MainActivity;
+import com.project.read_pro.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -16,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent( SplashScreen.this,MainActivity.class));
+                startActivity(new Intent( SplashScreen.this, LoginActivity.class));
             }
         },1500);
     }
