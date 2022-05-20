@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/drawable/ic_welcome.xml" value="0.1535" />
+        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_bookmark.xml" value="0.183" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_home.xml" value="0.183" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_search.xml" value="0.183" />
