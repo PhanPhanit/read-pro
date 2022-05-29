@@ -7,4 +7,13 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="enter_you_email">Enter you email</string>
+    <string name="phone">Phone</string>
+    <string name="register">Register</string>
+    <string name="user_name">User name</string>
+    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="create">Create</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>

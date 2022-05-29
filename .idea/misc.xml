@@ -3,12 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/drawable/backgroud_cornner.xml" value="0.1535" />
-        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/drawable/background_button.xml" value="0.1535" />
-        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/drawable/button_login_social.xml" value="0.176" />
-        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/drawable/ic_welcome.xml" value="0.1535" />
-        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/Android native/ReadPro-Mobile/read-pro/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_bookmark.xml" value="0.183" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_home.xml" value="0.183" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_search.xml" value="0.183" />
@@ -19,6 +13,8 @@
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/layout/activity_login.xml" value="0.25052083333333336" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>
