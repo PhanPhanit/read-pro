@@ -8,6 +8,7 @@
 
 
 
+
     <LinearLayout
         android:id="@+id/layout_login"
         android:orientation="vertical"
@@ -49,52 +50,57 @@
             android:textSize="18dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <EditText
-            android:hint="Enter your email"
-            android:paddingLeft="20dp"
-            android:textColor="@color/black"
-            android:id="@+id/edit_email"
-            android:textColorHint="@color/gray"
-            android:textSize="16dp"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/background_corner"
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/text_field_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+          android:layout_height="wrap_content">
+          <com.google.android.material.textfield.TextInputEditText
+              android:drawableEnd="@drawable/ic_baseline_message_24"
+              android:inputType="textEmailAddress"
+              android:hint="@string/enter_you_email"
+              android:id="@+id/edit_email"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+      </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layout_pass"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/layout_email"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/password"
-            android:textSize="18dp"
+            android:textSize="18dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_field_pass"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:textSize="16dp"
-            android:id="@+id/edit_pass"
-            android:textColor="@color/black"
-            android:hint="@string/password"
-            android:paddingLeft="20dp"
-            android:textColorHint="@color/gray"
-            android:layout_marginTop="10dp"
-            android:inputType="textPassword"
-            android:drawableRight="@drawable/ic_baseline_visibility_24"
-            android:paddingRight="10dp"
-            android:background="@drawable/background_corner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_pass"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/ic_baseline_visibility_24"
+                android:hint="@string/enter_you_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:gravity="right"
         android:id="@+id/layout_forget_password"
