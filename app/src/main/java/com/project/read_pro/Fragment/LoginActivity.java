@@ -12,19 +12,28 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.project.read_pro.MainActivity;
 import com.project.read_pro.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import Data.HTTP;
+import Data.LocalStorage;
+
 public class LoginActivity extends AppCompatActivity {
-    EditText editEmail,editPass;
-    View textSignup ;
-    View btnLogin ;
-    String email,pass;
+   private EditText editEmail,editPass;
+   private View textSignup ;
+   private View btnLogin ;
+   private String email,pass;
+   LocalStorage localStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        localStorage = new LocalStorage(LoginActivity.this);
         textSignup  = findViewById(R.id.text_signUP);
         btnLogin = findViewById(R.id.button_login);
         editEmail = findViewById(R.id.edit_email);
@@ -51,13 +60,82 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this,"Email and password is required",Toast.LENGTH_LONG).show();
     }
     private void sentLogin() {
+        //Toast.makeText(this,"Sent",Toast.LENGTH_SHORT).show();
+        JSONObject param = new JSONObject();
+        try{
+            param.put("email",email);
+            param.put("password",pass);
 
-        Toast.makeText(this,"Sent",Toast.LENGTH_SHORT).show();
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        String data = param.toString();
+        String url = getString(R.string.api_server)+"auth/login";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HTTP http = new HTTP(LoginActivity.this,url);
+                http.setMethod("post");
+                http.setDate(data);
+                http.sent();
 
-        Intent intent = new Intent(this,Register.class);
-        startActivity(intent);
-        finish();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Integer code = http.getStatusCode();
+                        if(code==201){
+                            try{
+                                JSONObject response = new JSONObject(http.getResponse());
+                                String token = response.getString("token");
+
+                                localStorage.setToken("Token");
+
+
+                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                startActivity(intent);
+                                finish();
+
+                            }catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                        }
+                        else if(code == 422) {
+                            try {
+                                JSONObject response = new JSONObject(http.getResponse());
+                                String msg = response.getString("message");
+                                alertFail(msg);
+                            }catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                        }
+                        else if(code == 401 ){
+                            try {
+                                JSONObject response = new JSONObject(http.getResponse());
+                                String msg = response.getString("message");
+                                alertFail(msg);
+                            }catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                        }
+                        else {
+                            alertFail("Error"+code);
+                        }
+                    }
+                });
+            }
+        }).start();
+
+
+
     }
+
+    private void alertFail(String msg) {
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
+    private void alertSuccess(String msg) {
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
+
     public void openActivity2() {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
