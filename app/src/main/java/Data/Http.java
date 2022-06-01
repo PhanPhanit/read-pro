@@ -1,5 +1,4 @@
 package Data;
-
 import android.content.Context;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,14 +7,14 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HTTP {
+public class Http {
     Context context;
     private  String url,method= "GET",date=null,response=null;
     private Boolean token = false;
     private Integer statusCode = 0;
-    private  LocalStorage localStorage;
+    private final LocalStorage localStorage;
 
-    public HTTP(Context context, String url) {
+    public Http(Context context, String url) {
         this.context = context;
         this.url = url;
         localStorage = new LocalStorage(context);
@@ -48,7 +47,7 @@ public class HTTP {
             connection.setRequestProperty("Content-Type","application/json");
             connection.setRequestProperty("Accept","application/json");
             if(token){
-                connection.setRequestProperty("Authorization","Bearer"+ localStorage.getToken());
+                connection.setRequestProperty("Authorization","Bearer "+ localStorage.getToken());
             }
             if(! method.equals("GET")){
                 connection.setDoOutput(true);
@@ -82,5 +81,7 @@ public class HTTP {
             e.printStackTrace();
         }
     }
+
+
 
 }

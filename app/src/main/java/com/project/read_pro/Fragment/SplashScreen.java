@@ -15,27 +15,23 @@ import com.project.read_pro.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import Data.HTTP;
+import Data.Http;
 import Data.LocalStorage;
 
 public class SplashScreen extends AppCompatActivity {
-    Context context ;
-    LocalStorage localStorage;
-    HTTP http;
-
-
+    Http http;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 String url = getString(R.string.api_server)+"users/showMe";
-
-                http = new HTTP(SplashScreen.this,url);
+                http = new Http(SplashScreen.this,url);
                 http.setMethod("GET");
+                http.setToken(true);
                 http.sent();
 
                 runOnUiThread(new Runnable() {
@@ -44,11 +40,11 @@ public class SplashScreen extends AppCompatActivity {
                     public void run() {
 
                         if(code==200){
-                            printSnake("201");
+                           // printSnake("200");
                             startActivity(new Intent( SplashScreen.this, MainActivity.class));
                             finish();
                         }else if(code==401){
-                            printSnake("401");
+                           // printSnake("401");
                             startActivity(new Intent( SplashScreen.this, LoginActivity.class));
                             finish();
                         }else {
@@ -60,13 +56,6 @@ public class SplashScreen extends AppCompatActivity {
             }
         }).start();
 
-
-
-//
-//        new Handler().postDelayed(() -> {
-//            startActivity(new Intent( SplashScreen.this, LoginActivity.class));
-//            finish();
-//        },1500);
     }
 
     void printSnake(String msg){

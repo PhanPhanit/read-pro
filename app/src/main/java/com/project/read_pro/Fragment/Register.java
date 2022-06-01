@@ -13,9 +13,8 @@ import com.project.read_pro.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
+import Data.Http;
 
-import Data.HTTP;
 
 public class Register extends AppCompatActivity {
     private View textLogin,btnRegister;
@@ -74,7 +73,7 @@ public class Register extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-               HTTP  http = new HTTP(Register.this,url);
+               Http http = new Http(Register.this,url);
                http.setMethod("POST");
                http.setDate(data);
                http.sent();

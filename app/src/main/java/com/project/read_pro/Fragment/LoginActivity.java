@@ -18,14 +18,15 @@ import com.project.read_pro.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Data.HTTP;
+import Data.Http;
 import Data.LocalStorage;
 
 public class LoginActivity extends AppCompatActivity {
    private EditText editEmail,editPass;
-   private View textSignup ;
+   private View textSignup,forget ;
    private View btnLogin ;
    private String email,pass;
+   String token = "";
    LocalStorage localStorage;
 
     @Override
@@ -38,8 +39,10 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.button_login);
         editEmail = findViewById(R.id.edit_email);
         editPass = findViewById(R.id.edit_pass);
-
-        btnLogin.setOnClickListener(v -> checkLogin());
+        forget = findViewById(R.id.text_proget_password);
+        btnLogin.setOnClickListener(v ->
+                checkLogin()
+        );
 
         textSignup.setOnClickListener(
                 v -> openActivity2()
@@ -74,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                HTTP http = new HTTP(LoginActivity.this,url);
+                Http http = new Http(LoginActivity.this,url);
                 http.setMethod("post");
                 http.setDate(data);
                 http.sent();
@@ -88,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                 JSONObject response = new JSONObject(http.getResponse());
                                 String token = response.getString("token");
 
-                                localStorage.setToken("Token");
+                                localStorage.setToken(token);
 
 
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
