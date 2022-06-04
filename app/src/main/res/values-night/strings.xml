@@ -1,12 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Read Pro</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="my_library">My Library</string>
     <string name="read_pro">Read Pro</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="enter_you_email">Enter you email</string>
     <string name="phone">Phone</string>
     <string name="register">Register</string>
     <string name="user_name">User name</string>
@@ -16,5 +13,4 @@
     <string name="enter_your_password">Enter your password</string>
     <string name="create">Create</string>
     <string name="already_have_an_account">Already have an account?</string>
-    <string name="api_server">https://readpro-android-laravel.herokuapp.com/api/v1/</string>
 </resources>
