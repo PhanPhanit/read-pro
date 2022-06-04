@@ -1,5 +1,4 @@
-package com.project.read_pro.Fragment;
-import android.content.Intent;
+package com.project.read_pro.view;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -7,13 +6,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.project.read_pro.MainActivity;
 import com.project.read_pro.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Data.Http;
+import com.project.read_pro.utils.Http;
 
 
 public class Register extends AppCompatActivity {

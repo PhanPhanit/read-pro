@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReadPro">
         <activity
-            android:name=".Fragment.LoginActivity"
+            android:name=".view.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Fragment.Register"
+            android:name=".view.Register"
             android:exported="false" />
         <activity
-            android:name=".Fragment.SplashScreen"
+            android:name=".view.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

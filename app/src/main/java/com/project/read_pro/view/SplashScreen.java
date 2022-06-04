@@ -1,22 +1,14 @@
-package com.project.read_pro.Fragment;
+package com.project.read_pro.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.project.read_pro.MainActivity;
 import com.project.read_pro.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import Data.Http;
-import Data.LocalStorage;
+import com.project.read_pro.utils.Http;
 
 public class SplashScreen extends AppCompatActivity {
     Http http;

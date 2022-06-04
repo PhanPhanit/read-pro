@@ -1,22 +1,21 @@
-package com.project.read_pro;
+package com.project.read_pro.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.project.read_pro.Fragment.HomeFragment;
 import com.google.android.material.badge.BadgeDrawable;
-import com.project.read_pro.Fragment.LoginActivity;
 import com.project.read_pro.Fragment.MyLibraryFragment;
 import com.project.read_pro.Fragment.NotificationFragment;
 import com.project.read_pro.Fragment.ProfileFragment;
 import com.project.read_pro.Fragment.SearchFragment;
+import com.project.read_pro.R;
 import com.project.read_pro.databinding.ActivityMainBinding;
 
-import Data.LocalStorage;
+import com.project.read_pro.storage.LocalStorage;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;

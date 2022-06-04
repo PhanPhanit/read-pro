@@ -1,5 +1,8 @@
-package Data;
+package com.project.read_pro.utils;
 import android.content.Context;
+
+import com.project.read_pro.storage.LocalStorage;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
