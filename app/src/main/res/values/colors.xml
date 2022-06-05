@@ -12,4 +12,6 @@
     <color name="color_button_social">#E9F7EF</color>
 
     <color name="color_primary">#28AC61</color>
+    <color name="light_green">#ECFCF3</color>
+    <color name="weight_green">#BFE6D0</color>
 </resources>
