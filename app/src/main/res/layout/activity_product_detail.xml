@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ProductDetailActivity">
+
+    <!-- Menu -->
+    <FrameLayout
+        android:id="@+id/top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true">
+
+        <!-- arrow back -->
+        <ImageView
+            android:id="@+id/book_detail_arrow_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_marginStart="16dp"/>
+
+        <!-- book detail title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Cart logo -->
+        <ru.nikartm.support.ImageBadgeView
+            android:id="@+id/cart_badge_view"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_outline_shopping_cart"
+            app:ibv_badgeColor="@color/color_primary"
+            app:ibv_badgeTextColor="@color/white"
+            app:ibv_badgeTextSize="12sp"
+            app:ibv_fixedBadgeRadius="12dp" />
+
+
+    </FrameLayout>
+
+</RelativeLayout>

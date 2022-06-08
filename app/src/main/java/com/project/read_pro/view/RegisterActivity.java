@@ -1,17 +1,18 @@
 package com.project.read_pro.view;
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
-
 import com.project.read_pro.R;
 
-public class LoginActivity extends AppCompatActivity {
+
+
+public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
     }
+
 }

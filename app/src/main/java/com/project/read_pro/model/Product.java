@@ -10,8 +10,8 @@ public class Product {
     @SerializedName("name")
     private String title;
 
-    private float price;
-    private float discount;
+    private double price;
+    private double discount;
     private String author;
     private String publisher;
     private String genre;
@@ -20,7 +20,7 @@ public class Product {
     private String published;
     private String description;
     private String[] image;
-    private float averageRating;
+    private double averageRating;
     private int numOfReviews;
     private int user;
     private int category;
@@ -56,11 +56,11 @@ public class Product {
         return title;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public float getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
@@ -96,7 +96,7 @@ public class Product {
         return image;
     }
 
-    public float getAverageRating() {
+    public double getAverageRating() {
         return averageRating;
     }
 

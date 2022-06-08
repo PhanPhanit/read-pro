@@ -3,7 +3,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.project.read_pro.Fragment.HomeFragment;
@@ -14,28 +18,47 @@ import com.project.read_pro.Fragment.ProfileFragment;
 import com.project.read_pro.Fragment.SearchFragment;
 import com.project.read_pro.R;
 import com.project.read_pro.databinding.ActivityMainBinding;
-
-import com.project.read_pro.storage.LocalStorage;
+import com.project.read_pro.storage.LoginUtils;
+import com.project.read_pro.view_model.ShowCurrentUserViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    LocalStorage localStorage;
+    ShowCurrentUserViewModel showCurrentUserViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        localStorage = new LocalStorage(MainActivity.this);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        showFragment(new HomeFragment());
 
+        showCurrentUserViewModel = new ViewModelProvider(this).get(ShowCurrentUserViewModel.class);
+
+        showCurrentUser();
+
+
+        showFragment(new HomeFragment());
         BadgeDrawable badgeDrawable = binding.bnvMain.getOrCreateBadge(R.id.menu_notification);
         badgeDrawable.setVisible(true);
         badgeDrawable.setNumber(8);
 
         setUpListener();
 
+
+    }
+
+    private void showCurrentUser() {
+        //String token = "Bearer " + LoginUtils.getInstance(this).getUserToken();
+        String token = "Bearer 82|XKRtKZpBorml4SUjfll6GeW445T0RUZlNXudedlx";
+        showCurrentUserViewModel.ShowCurrentUser(token).observe(this, showCurrentUserResponse -> {
+            if(showCurrentUserResponse != null){
+                if(showCurrentUserResponse.getCode() == 200){
+                    LoginUtils.getInstance(this).saveUserInfo(showCurrentUserResponse.getUser());
+                }else{
+                    LoginUtils.getInstance(this).clearAll();
+                }
+                binding.loadingScreen.setVisibility(View.GONE);
+            }
+        });
 
     }
 

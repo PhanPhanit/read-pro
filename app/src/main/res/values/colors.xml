@@ -8,10 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#28AC61</color>
-    <color name="gray">#A3A2A2</color>
+    <color name="gray">#666666</color>
     <color name="color_button_social">#E9F7EF</color>
 
     <color name="color_primary">#28AC61</color>
     <color name="light_green">#ECFCF3</color>
     <color name="weight_green">#BFE6D0</color>
+
+    <color name="red">#BB2B2B</color>
+    <color name="dark_green">#005123</color>
+
+    <color name="horizontal_line_color">#D8D8D8</color>
+
+    <color name="star_fill">#FDCC0D</color>
 </resources>

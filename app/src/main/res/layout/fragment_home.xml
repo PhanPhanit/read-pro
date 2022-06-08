@@ -69,7 +69,8 @@
         android:layout_below="@id/top_menu"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        android:layout_marginEnd="8dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:text="Book of the Day"
+                android:text="@string/book_of_the_day"
                 android:textColor="@color/black"
                 android:textSize="28dp"
                 android:textStyle="bold" />
@@ -89,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Selected the best read for you day!"
+                android:text="@string/selected_the_best_read"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
             <!-- Slider -->
@@ -110,6 +111,110 @@
                 app:sliderIndicatorUnselectedColor="@color/gray"
                 app:sliderScrollTimeInSec="1"
                 app:sliderStartAutoCycle="true" />
+            <!-- New arrival -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/new_arrival"
+                    android:textColor="@color/black"
+                    android:layout_gravity="start|center_vertical"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tv_new_arrival_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more"
+                    android:layout_gravity="end|center_vertical"
+                    android:textColor="@color/red"
+                    android:textSize="18sp"/>
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_arrival_subtitle"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/new_arrival_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- best selling -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/best_selling"
+                    android:textColor="@color/black"
+                    android:layout_gravity="start|center_vertical"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tv_best_selling_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more"
+                    android:layout_gravity="end|center_vertical"
+                    android:textColor="@color/red"
+                    android:textSize="18sp"/>
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/best_selling_subtitle"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/best_selling_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:listitem="@layout/best_selling_item" />
+            <!-- recommended -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/recommended_title"
+                    android:textColor="@color/black"
+                    android:layout_gravity="start|center_vertical"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tv_product_recommended_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/more"
+                    android:layout_gravity="end|center_vertical"
+                    android:textColor="@color/red"
+                    android:textSize="18sp"/>
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recommended_subtitle"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommended_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </ScrollView>

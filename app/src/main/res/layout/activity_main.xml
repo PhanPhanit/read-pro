@@ -5,19 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
-    <!-- bottom navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnvMain"
-        app:menu="@menu/bottom_nav_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:labelVisibilityMode="labeled"
-        android:layout_alignParentBottom="true" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fgMain"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- bottom navigation -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnvMain"
+            app:menu="@menu/bottom_nav_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelVisibilityMode="labeled"
+            android:layout_alignParentBottom="true" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fgMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bnvMain"
+            android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <!-- loading screen -->
+    <FrameLayout
+        android:id="@+id/loading_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bnvMain"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <ProgressBar
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/color_primary" />
+    </FrameLayout>
+
 </RelativeLayout>
