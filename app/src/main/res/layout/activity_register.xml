@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.Register">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.RegisterActivity">
     <LinearLayout
         android:id="@+id/layout_register"
         android:orientation="vertical"
@@ -144,21 +145,22 @@
             android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <EditText
-            android:hint="@string/enter_your_password"
-            android:paddingStart="20dp"
-            android:textColor="@color/black"
-            android:id="@+id/edit_pass"
-            android:textColorHint="@color/gray"
-            android:paddingEnd="10dp"
-            android:textSize="16sp"
-            android:inputType="textPassword"
-            android:drawableEnd="@drawable/ic_baseline_visibility_24"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/background_corner"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_field_pass"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:autofillHints="" />
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_pass"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/ic_baseline_visibility_24"
+                android:hint="Enter your password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
     </LinearLayout>
     <LinearLayout

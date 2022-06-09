@@ -16,5 +16,18 @@
     <string name="enter_your_password">Enter your password</string>
     <string name="create">Create</string>
     <string name="already_have_an_account">Already have an account?</string>
-    <string name="api_server">https://readpro-android-laravel.herokuapp.com/api/v1/</string>
+
+    <!-- home fragment -->
+    <string name="app_read">Read</string>
+    <string name="book_of_the_day">Book of the Day</string>
+    <string name="selected_the_best_read">Selected the best read for you day!</string>
+    <string name="new_arrival">New arrival</string>
+    <string name="more">More</string>
+    <string name="new_arrival_subtitle">Latest books for you to enjoy</string>
+    <string name="best_selling">Best selling</string>
+    <string name="best_selling_subtitle">Best books selected for you</string>
+    <string name="recommended_title">Recommended for you</string>
+    <string name="recommended_subtitle">We think you\'ll like these</string>
+
+
 </resources>
