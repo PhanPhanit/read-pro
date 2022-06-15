@@ -2,8 +2,10 @@ package com.project.read_pro.retrofit;
 
 import com.project.read_pro.model.User;
 import com.project.read_pro.response.ProductResponse;
+import com.project.read_pro.response.ReviewResponse;
 import com.project.read_pro.response.ShowCurrentUserResponse;
 import com.project.read_pro.response.SlideResponse;
+import com.project.read_pro.response.StarPercentResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -33,5 +35,13 @@ public interface Api {
     @Headers({"Accept: application/json"})
     @GET("wsb-pro?limit=10&sort=-views")
     Call<ProductResponse> getRecommendedProduct();
+
+    @Headers({"Accept: application/json"})
+    @GET("wsb-rev/star-percent/{productId}")
+    Call<StarPercentResponse> getProductStarPercent(@Path("productId") int productId);
+
+    @Headers({"Accept: application/json"})
+    @GET("wsb-rev?limit={limit}&page={page}&product={productId}")
+    Call<ReviewResponse> getReview(@Path("limit") int limit, @Path("page") int page, @Path("productId") int productId);
 
 }

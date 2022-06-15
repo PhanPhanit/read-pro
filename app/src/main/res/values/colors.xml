@@ -21,4 +21,9 @@
     <color name="horizontal_line_color">#D8D8D8</color>
 
     <color name="star_fill">#FDCC0D</color>
+
+    <color name="light_black">#E1E1E1</color>
+
+    <color name="percent_star_gray">#C4C4C4</color>
+    <color name="percent_star_active">#FA9C1C</color>
 </resources>

@@ -3,18 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android/read-pro/app/src/main/res/drawable/custom_progress_star_percent_bg.xml" value="0.196" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/ic_bookmark.xml" value="0.2045" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/ic_bookmark_fill.xml" value="0.2045" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/ic_outline_shopping_cart.xml" value="0.2045" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/ic_search.xml" value="0.2045" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/ic_sell.xml" value="0.2045" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/slider_image_background.xml" value="0.2045" />
+        <entry key="..\:/android/read-pro/app/src/main/res/drawable/star_percent_rounded.xml" value="0.2045" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/activity_login.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/activity_main.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/activity_product_detail.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/activity_register.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/activity_splash_screen.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/best_selling_item.xml" value="0.25" />
+        <entry key="..\:/android/read-pro/app/src/main/res/layout/book_detail_image_item.xml" value="0.2965811965811966" />
+        <entry key="..\:/android/read-pro/app/src/main/res/layout/customer_rating_item.xml" value="0.24166666666666667" />
+        <entry key="..\:/android/read-pro/app/src/main/res/layout/customer_single_review.xml" value="0.24097222222222223" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/fragment_home.xml" value="0.29379485014774165" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/fragment_my_library.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/fragment_notification.xml" value="0.29743589743589743" />

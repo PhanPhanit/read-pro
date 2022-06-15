@@ -29,5 +29,11 @@
     <string name="recommended_title">Recommended for you</string>
     <string name="recommended_subtitle">We think you\'ll like these</string>
 
+    <!-- book detail -->
+    <string name="book_detail">Book Detail</string>
+    <string name="book_detail_description">Description</string>
+    <string name="book_detail_customer_rating">Customer Rating:</string>
+    <string name="book_detail_customer_review">Customer Reviews</string>
+
 
 </resources>
