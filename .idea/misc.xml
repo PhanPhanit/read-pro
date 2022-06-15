@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/custom_progress_star_percent_bg.xml" value="0.196" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/ic_bookmark.xml" value="0.2045" />
         <entry key="..\:/android/read-pro/app/src/main/res/drawable/ic_bookmark_fill.xml" value="0.2045" />
@@ -29,6 +30,8 @@
         <entry key="..\:/android/read-pro/app/src/main/res/layout/recommended_item.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/layout/slider_item.xml" value="0.29743589743589743" />
         <entry key="..\:/android/read-pro/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+=======
+>>>>>>> 81bc31abe89b23c1dbdc158017048cec15c437f8
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_bookmark.xml" value="0.183" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_home.xml" value="0.183" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/drawable/ic_search.xml" value="0.183" />
@@ -39,10 +42,18 @@
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
         <entry key="..\:/desktop/learn-android/read-pro/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/drawable/backgroud_ic.xml" value="0.2435" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/drawable/background_button.xml" value="0.2435" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/drawable/background_corner.xml" value="0.2435" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/drawable/button_login_social.xml" value="0.2435" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/drawable/ellipse.xml" value="0.2035" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/drawable/ic_sell.xml" value="0.2435" />
         <entry key="..\:/read_pro/read-pro/app/src/main/res/layout/activity_login.xml" value="0.25052083333333336" />
         <entry key="..\:/read_pro/read-pro/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/read_pro/read-pro/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
         <entry key="..\:/read_pro/read-pro/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/read_pro/read-pro/app/src/main/res/menu/bottom_nav_menu.xml" value="0.176" />
       </map>
     </option>
   </component>

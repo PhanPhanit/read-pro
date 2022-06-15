@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -78,7 +79,20 @@ public class MainActivity extends AppCompatActivity {
                     showFragment(new NotificationFragment());
                     break;
                 default:
-                    showFragment(new ProfileFragment());
+                    //String token = "Bearer 82|XKRtKZpBorml4SUjfll6GeW445T0RUZlNXudedlx";
+                    String token = "Bearer " + LoginUtils.getInstance(this).getUserToken();
+                    showCurrentUserViewModel.ShowCurrentUser(token).observe(this, showCurrentUserResponse -> {
+                        if(showCurrentUserResponse != null){
+                            if(showCurrentUserResponse.getCode() == 200){
+                                showFragment(new ProfileFragment());
+                            }else{
+                               startActivity(new Intent(this,LoginActivity.class));
+                            }
+                            binding.loadingScreen.setVisibility(View.GONE);
+                        }
+                    });
+
+
             }
             return true;
         });
