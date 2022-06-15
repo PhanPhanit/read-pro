@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showCurrentUser() {
         //String token = "Bearer " + LoginUtils.getInstance(this).getUserToken();
-        String token = "Bearer 82|XKRtKZpBorml4SUjfll6GeW445T0RUZlNXudedlx";
+        String token = "Bearer 2|AUDBZv4W7wATk3Cu2qxKZ7Ws3d3gTxSC8ALhf4Ml";
         showCurrentUserViewModel.ShowCurrentUser(token).observe(this, showCurrentUserResponse -> {
             if(showCurrentUserResponse != null){
                 if(showCurrentUserResponse.getCode() == 200){
@@ -78,21 +78,14 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_notification:
                     showFragment(new NotificationFragment());
                     break;
+                case R.id.menu_profile:
+                    if(!LoginUtils.getInstance(this).isLoggedIn()){
+                        startActivity(new Intent(this,LoginActivity.class));
+                    }else{
+                        showFragment(new ProfileFragment());
+                    }
+                    break;
                 default:
-                    //String token = "Bearer 82|XKRtKZpBorml4SUjfll6GeW445T0RUZlNXudedlx";
-                    String token = "Bearer " + LoginUtils.getInstance(this).getUserToken();
-                    showCurrentUserViewModel.ShowCurrentUser(token).observe(this, showCurrentUserResponse -> {
-                        if(showCurrentUserResponse != null){
-                            if(showCurrentUserResponse.getCode() == 200){
-                                showFragment(new ProfileFragment());
-                            }else{
-                               startActivity(new Intent(this,LoginActivity.class));
-                            }
-                            binding.loadingScreen.setVisibility(View.GONE);
-                        }
-                    });
-
-
             }
             return true;
         });
