@@ -10,11 +10,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.project.read_pro.R;
 import com.project.read_pro.adapter.BookDetailImageAdapter;
 import com.project.read_pro.adapter.BookDetailStarPercentAdapter;
 import com.project.read_pro.databinding.ActivityProductDetailBinding;
@@ -28,7 +26,6 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
