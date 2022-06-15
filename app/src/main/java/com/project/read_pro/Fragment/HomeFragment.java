@@ -1,7 +1,9 @@
 package com.project.read_pro.Fragment;
 
+import static com.project.read_pro.utils.AppConstant.PRODUCT;
 import static com.project.read_pro.utils.InternetUtils.isNetworkConnected;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -27,6 +29,7 @@ import com.project.read_pro.model.Product;
 import com.project.read_pro.model.Slide;
 import com.project.read_pro.response.SlideResponse;
 import com.project.read_pro.storage.LoginUtils;
+import com.project.read_pro.view.ProductDetailActivity;
 import com.project.read_pro.view_model.ProductViewModel;
 import com.project.read_pro.view_model.SlideViewModel;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -112,6 +115,7 @@ public class HomeFragment extends Fragment {
     private void getBestSelling() {
 
         bestSellingRecyclerView = binding.bestSellingRecyclerView;
+        bestSellingRecyclerView.setNestedScrollingEnabled(false);
         bestSellingRecyclerView.setHasFixedSize(true);
         bestSellingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
@@ -167,6 +171,15 @@ public class HomeFragment extends Fragment {
                     newArrivalProducts = productResponse.getProducts();
                     newArrivalAdapter = new NewArrivalAdapter(getContext(), newArrivalProducts);
                     newArrivalRecyclerView.setAdapter(newArrivalAdapter);
+                    newArrivalAdapter.setOnclickNewArrival(new NewArrivalAdapter.NewArrivalAdapterOnclickHandler() {
+                        @Override
+                        public void onClick(Product product) {
+                            Intent intent = new Intent(getContext(), ProductDetailActivity.class);
+                            // pass an object of product class
+                            intent.putExtra(PRODUCT, product);
+                            startActivity(intent);
+                        }
+                    });
                 }
             });
         }else {

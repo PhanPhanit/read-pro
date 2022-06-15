@@ -27,7 +27,12 @@
         <!-- book detail title -->
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/book_detail"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"
+            android:textSize="22dp"/>
 
         <!-- Cart logo -->
         <ru.nikartm.support.ImageBadgeView
@@ -45,5 +50,261 @@
 
 
     </FrameLayout>
+    <!-- scroll view -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/top_menu"
+        android:layout_alignParentBottom="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Slider -->
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/book_detail_image_slider"
+                android:layout_width="match_parent"
+                android:layout_height="420dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/color_primary"
+                app:sliderIndicatorUnselectedColor="@color/gray"
+                app:sliderScrollTimeInSec="1"
+                app:sliderStartAutoCycle="true" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
+                <!-- title -->
+                <TextView
+                    android:id="@+id/book_detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Harry Potter and the Philosopher's Stone J. K. Rowling"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+                <!-- author -->
+                <TextView
+                    android:id="@+id/book_detail_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Phan Phanit"
+                    android:textColor="@color/gray"
+                    android:textSize="16sp" />
+                <!-- star rating -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RatingBar
+                        android:id="@+id/book_detail_rating_star"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:progressTint="@color/star_fill"
+                        android:rating="3.5"
+                        android:scaleX="0.6"
+                        android:scaleY=".6"
+                        android:secondaryProgressTint="@android:color/transparent"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
+
+                    <TextView
+                        android:id="@+id/book_detail_num_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-65dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="12,110"
+                        android:textColor="@color/dark_green"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+                <!-- sold -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_sell" />
+
+                    <TextView
+                        android:id="@+id/book_detail_num_sold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="12,110 sold"
+                        android:textColor="@color/dark_green"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/book_detail_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Price $19.99"
+                        android:textColor="@color/dark_green"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/book_detail_add_to_cart"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:src="@drawable/ic_add_shopping_cart" />
+                </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/horizontal_line_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_description"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="200 Pages"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_category"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Fantacy"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/book_detail_language"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_language"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="English"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/horizontal_line_color" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/book_detail_description"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/book_detail_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hopeful reflection on the beauty and unpredictability of existence"
+                    android:textColor="@color/gray"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/book_detail_customer_rating"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/book_detail_num_cus_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="2,201"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/book_detail_rating_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.6 rating"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"/>
+                <!-- star rating progress -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/book_detail_star_rating_progress_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/book_detail_customer_review"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <!-- customer review recycler view -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/book_detail_review_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
