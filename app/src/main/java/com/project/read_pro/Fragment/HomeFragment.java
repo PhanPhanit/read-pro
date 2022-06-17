@@ -4,7 +4,6 @@ import static com.project.read_pro.utils.AppConstant.PRODUCT;
 import static com.project.read_pro.utils.InternetUtils.isNetworkConnected;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -87,8 +86,6 @@ public class HomeFragment extends Fragment {
         getBestSelling();
         // recommended
         getRecommendedProduct();
-
-
         // set listener
         setUpListener();
     }
@@ -104,6 +101,8 @@ public class HomeFragment extends Fragment {
                     recommendedProducts = productResponse.getProducts();
                     recommendedAdapter = new RecommendedAdapter(getContext(), recommendedProducts);
                     recommendedProductRecyclerView.setAdapter(recommendedAdapter);
+                    // hide loading
+                    binding.loadingScreen.setVisibility(View.GONE);
                 }
             });
         }else {

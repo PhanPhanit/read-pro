@@ -1,19 +1,89 @@
 package com.project.read_pro.view;
 
+import static com.project.read_pro.utils.Keyboard.hideKeyboard;
+import static com.project.read_pro.utils.ProgressDialog.createAlertDialog;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
-import com.project.read_pro.R;
+import com.project.read_pro.databinding.ActivityLoginBinding;
+import com.project.read_pro.model.User;
+import com.project.read_pro.storage.LoginUtils;
+import com.project.read_pro.view_model.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private ActivityLoginBinding binding;
+    private LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        setUpListener();
 
 
+
+
+
+    }
+
+    private void setUpListener() {
+        binding.textSignUP.setOnClickListener(view -> gotoRegisterActivity());
+        binding.btnLogin.setOnClickListener(view -> loginUser());
+    }
+
+
+    private void loginUser(){
+
+        hideKeyboard(this);
+
+        String email = binding.editEmail.getText().toString();
+        String password = binding.editPass.getText().toString();
+        if(email.isEmpty()){
+            binding.editEmail.setError("Email Required");
+            binding.editEmail.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            binding.editPass.setError("Password Required");
+            binding.editPass.requestFocus();
+            return;
+        }
+        AlertDialog alert = createAlertDialog(this);
+        loginViewModel.getLoginResponseLiveData(email, password).observe(this, loginSignupResponse -> {
+            if(!loginSignupResponse.isError()){
+                User user = loginSignupResponse.getUser();
+                String token = loginSignupResponse.getToken();
+                LoginUtils.getInstance(this).saveUserInfo(user);
+                LoginUtils.getInstance(this).saveUserToken(token);
+                Toast.makeText(this, "Login successful.", Toast.LENGTH_SHORT).show();
+                alert.dismiss();
+                gotoMainActivity();
+            }else{
+                alert.dismiss();
+                Toast.makeText(this, loginSignupResponse.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void gotoRegisterActivity(){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

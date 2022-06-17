@@ -123,17 +123,16 @@
         android:id="@+id/button_login"
         android:layout_below="@+id/layout_forget_password"
         android:layout_marginLeft="20dp"
-
         android:layout_marginRight="20dp"
-        android:background="@drawable/background_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
+        <Button
+            android:id="@+id/btn_login"
             android:textAlignment="center"
-            android:padding="10dp"
             android:text="@string/login"
             android:textColor="@color/white"
-            android:textSize="22dp"
+            android:background="@drawable/background_button"
+            android:textSize="18dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

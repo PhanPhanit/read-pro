@@ -7,7 +7,7 @@
     <string name="phone">Phone</string>
     <string name="register">Register</string>
     <string name="user_name">User name</string>
-    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="enter_your_name">Enter your full name</string>
     <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="enter_your_email">Enter your email</string>
     <string name="enter_your_password">Enter your password</string>

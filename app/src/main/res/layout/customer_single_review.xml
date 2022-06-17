@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="8dp"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/review_user_logo"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/circle_bg"
+            android:padding="2dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_person_white"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/content_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/review_user_logo"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Phan Phanit"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="16dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RatingBar
+                    android:id="@+id/rv_rating_star"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:progressTint="@color/star_fill"
+                    android:rating="3.5"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:secondaryProgressTint="@android:color/transparent"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="0dp" />
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/rv_date_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-85dp"
+                    android:text="a week ago"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <kr.co.prnd.readmore.ReadMoreTextView
+                android:id="@+id/rv_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor sit amet consectetur adipiscing elit sed justo vivamus, quis congue est parturient tempor felis velit sem mollis."
+                android:layout_marginTop="-16dp"
+                android:textSize="16dp"
+                app:readMoreMaxLine="3"
+                app:readMoreText="... Read More"
+                app:readMoreColor="@color/color_primary"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/horizontal_line_color"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

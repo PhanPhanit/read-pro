@@ -26,19 +26,5 @@
             android:layout_above="@id/bnvMain"
             android:layout_alignParentTop="true" />
     </RelativeLayout>
-    <!-- loading screen -->
-    <FrameLayout
-        android:id="@+id/loading_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white">
-
-        <ProgressBar
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/color_primary" />
-    </FrameLayout>
 
 </RelativeLayout>

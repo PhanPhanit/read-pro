@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ReadPro"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.FirstLoadActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ProductDetailActivity"
             android:exported="false" />
         <activity
