@@ -1,5 +1,7 @@
 package com.project.read_pro.response;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.project.read_pro.model.User;
 
 public class LoginSignupResponse {

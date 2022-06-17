@@ -24,6 +24,6 @@
 
     <color name="light_black">#E1E1E1</color>
 
-    <color name="percent_star_gray">#C4C4C4</color>
+    <color name="gray_c4c4">#C4C4C4</color>
     <color name="percent_star_active">#FA9C1C</color>
 </resources>

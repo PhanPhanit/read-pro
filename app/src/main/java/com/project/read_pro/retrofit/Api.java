@@ -1,17 +1,23 @@
 package com.project.read_pro.retrofit;
 
-import com.project.read_pro.model.User;
+import com.google.gson.JsonObject;
+import com.project.read_pro.response.LoginSignupResponse;
 import com.project.read_pro.response.ProductResponse;
 import com.project.read_pro.response.ReviewResponse;
 import com.project.read_pro.response.ShowCurrentUserResponse;
 import com.project.read_pro.response.SlideResponse;
 import com.project.read_pro.response.StarPercentResponse;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface Api {
 
@@ -41,7 +47,19 @@ public interface Api {
     Call<StarPercentResponse> getProductStarPercent(@Path("productId") int productId);
 
     @Headers({"Accept: application/json"})
-    @GET("wsb-rev?limit={limit}&page={page}&product={productId}")
-    Call<ReviewResponse> getReview(@Path("limit") int limit, @Path("page") int page, @Path("productId") int productId);
+    @GET("wsb-rev")
+    Call<ReviewResponse> getReview(@Query("limit") int limit, @Query("page") int page, @Query("product") int productId);
+
+    @Headers({
+            "Accept: application/json",
+            "Content-Type: application/json"
+    })
+    @POST("auth/login")
+    Call<LoginSignupResponse> loginUser(@Body JsonObject loginUser);
+
+    @Headers({"Accept: application/json"})
+    @DELETE("auth/logout")
+    Call<ResponseBody> logoutUser(@Header("authorization") String token);
+
 
 }

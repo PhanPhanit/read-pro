@@ -5,28 +5,30 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.RegisterActivity">
+
     <LinearLayout
         android:id="@+id/layout_register"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/read_pro"
+            android:textColor="@color/green"
             android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/green"/>
+            android:textStyle="bold" />
+
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/register"
-            android:textSize="18sp"
-            android:textColor="@color/gray"/>
-
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
 
 
     </LinearLayout>
@@ -46,25 +48,22 @@
             android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <EditText
-            android:textSize="16sp"
-            android:id="@+id/edit_username"
-            android:textColor="@color/black"
-            android:hint="@string/enter_your_full_name"
-            android:paddingStart="20dp"
-            android:textColorHint="@color/gray"
-            android:layout_marginTop="10dp"
-            android:inputType="textPersonName"
-            android:drawableEnd="@drawable/ic_baseline_person_24"
-            android:paddingEnd="10dp"
-            android:background="@drawable/background_corner"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:autofillHints="" />
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_username"
+                android:inputType="textPersonName"
+                android:drawableEnd="@drawable/ic_baseline_person_24"
+                android:hint="@string/enter_your_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/layout_phone"
+        android:id="@+id/layout_email"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
         android:paddingBottom="10dp"
@@ -75,58 +74,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="@string/phone"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:hint="@string/enter_your_phone_number"
-            android:paddingStart="20dp"
-            android:textColor="@color/black"
-            android:id="@+id/edit_phone"
-            android:textColorHint="@color/gray"
-            android:paddingEnd="10dp"
-            android:textSize="16sp"
-            android:inputType="phone"
-            android:drawableEnd="@drawable/ic_baseline_local_phone_24"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/background_corner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:autofillHints="" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout_email"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:layout_below="@+id/layout_phone"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
             android:text="@string/email"
             android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <EditText
-            android:hint="@string/enter_your_email"
-            android:paddingStart="20dp"
-            android:textColor="@color/black"
-            android:id="@+id/edit_email"
-            android:textColorHint="@color/gray"
-            android:paddingEnd="10dp"
-            android:textSize="16sp"
-            android:inputType="textEmailAddress"
-            android:drawableEnd="@drawable/ic_baseline_message_24"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/background_corner"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:autofillHints="" />
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_email"
+                android:inputType="textEmailAddress"
+                android:drawableEnd="@drawable/ic_baseline_message_24"
+                android:hint="Enter your email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -168,17 +131,16 @@
         android:id="@+id/button_create"
         android:layout_below="@+id/layout_pass"
         android:layout_marginLeft="20dp"
-
         android:layout_marginRight="20dp"
-        android:background="@drawable/background_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
+        <Button
+            android:id="@+id/btn_register"
             android:textAlignment="center"
-            android:padding="10dp"
-            android:text="@string/create"
+            android:text="@string/register"
+            android:background="@drawable/background_button"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -202,8 +164,4 @@
             android:text="@string/login"/>
 
     </LinearLayout>
-
-
-
-
 </RelativeLayout>
