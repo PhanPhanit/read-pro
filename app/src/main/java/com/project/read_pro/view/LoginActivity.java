@@ -14,11 +14,14 @@ import android.widget.Toast;
 
 import com.project.read_pro.databinding.ActivityLoginBinding;
 import com.project.read_pro.model.Cart;
+import com.project.read_pro.model.SaveProduct;
 import com.project.read_pro.model.User;
 import com.project.read_pro.storage.LoginUtils;
 import com.project.read_pro.utils.CartUtils;
+import com.project.read_pro.utils.SaveProductUtils;
 import com.project.read_pro.view_model.CartViewModel;
 import com.project.read_pro.view_model.LoginViewModel;
+import com.project.read_pro.view_model.SaveProductViewModel;
 
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private LoginViewModel loginViewModel;
     private CartViewModel cartViewModel;
+    private SaveProductViewModel saveProductViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         cartViewModel = new ViewModelProvider(this).get(CartViewModel.class);
+        saveProductViewModel = new ViewModelProvider(this).get(SaveProductViewModel.class);
         setUpListener();
     }
 
@@ -72,10 +77,16 @@ public class LoginActivity extends AppCompatActivity {
                         if (cartResponse != null) {
                             List<Cart> carts = cartResponse.getCarts();
                             CartUtils.getInstance().setCarts(carts);
+                            saveProductViewModel.getSaveProduct("Bearer " + token).observe(LoginActivity.this, saveProductResponse -> {
+                                if(saveProductResponse != null){
+                                    List<SaveProduct> saveProducts = saveProductResponse.getSaveProducts();
+                                    SaveProductUtils.getInstance().setSaveProducts(saveProducts);
+                                    alert.dismiss();
+                                    Toast.makeText(this, "Login successful.", Toast.LENGTH_SHORT).show();
+                                    gotoMainActivity();
+                                }
+                            });
                         }
-                        alert.dismiss();
-                        Toast.makeText(this, "Login successful.", Toast.LENGTH_SHORT).show();
-                        gotoMainActivity();
                     });
                 } else {
                     alert.dismiss();

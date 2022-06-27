@@ -170,6 +170,8 @@ public class CartActivity extends AppCompatActivity {
             if(responseBody != null){
                 CartUtils.getInstance().clearProductInCart();
                 carts.clear();
+                cartSetItemInit();
+                orderSummary();
                 cartAdapter.notifyDataSetChanged();
             }
         });

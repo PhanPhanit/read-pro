@@ -4,12 +4,9 @@ package com.project.read_pro.adapter;
 import static com.project.read_pro.utils.Utils.priceConverter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +16,7 @@ import com.project.read_pro.R;
 import com.project.read_pro.databinding.NewArrivalItemBinding;
 import com.project.read_pro.model.Product;
 import com.project.read_pro.storage.LoginUtils;
+import com.project.read_pro.utils.SaveProductUtils;
 import com.project.read_pro.view.LoginActivity;
 
 import java.util.List;
@@ -29,6 +27,7 @@ public class NewArrivalAdapter extends RecyclerView.Adapter<NewArrivalAdapter.Ne
     private List<Product> products;
     private Product currentProduct;
     private NewArrivalAdapter.NewArrivalAdapterOnclickHandler clickHandler;
+    private NewArrivalAdapter.SaveProductOnClickHandler saveProductClickHandler;
 
     public NewArrivalAdapter(Context context, List<Product> products){
         this.context = context;
@@ -41,6 +40,9 @@ public class NewArrivalAdapter extends RecyclerView.Adapter<NewArrivalAdapter.Ne
      */
     public interface NewArrivalAdapterOnclickHandler{
         void onClick(Product product);
+    }
+    public interface SaveProductOnClickHandler{
+        void onClick(Product product, int position);
     }
 
     @NonNull
@@ -61,6 +63,14 @@ public class NewArrivalAdapter extends RecyclerView.Adapter<NewArrivalAdapter.Ne
         holder.binding.newArrivalAuthor.setText(product.getAuthor());
         holder.binding.newArrivalDescription.setText(product.getDescription());
         holder.binding.newArrivalPrice.setText(priceConverter(product.getPrice() - product.getDiscount()));
+
+        if(LoginUtils.getInstance(context).isLoggedIn()){
+            if(SaveProductUtils.getInstance().isProductSaved(product)){
+                holder.binding.newArrivalSave.setImageResource(R.drawable.ic_bookmark_fill);
+            }else{
+                holder.binding.newArrivalSave.setImageResource(R.drawable.ic_bookmark);
+            }
+        }
     }
 
     @Override
@@ -88,14 +98,11 @@ public class NewArrivalAdapter extends RecyclerView.Adapter<NewArrivalAdapter.Ne
             binding.newArrivalSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(LoginUtils.getInstance(context).isLoggedIn()){
-                        Toast.makeText(context, "Save", Toast.LENGTH_SHORT).show();
-                    }else{
-                        gotoLoginActivity();
-                    }
+                    int position = getBindingAdapterPosition();
+                    Product product = products.get(position);
+                    saveProductClickHandler.onClick(product, position);
                 }
             });
-
         }
     }
 
@@ -104,8 +111,8 @@ public class NewArrivalAdapter extends RecyclerView.Adapter<NewArrivalAdapter.Ne
         this.clickHandler = clickHandler;
     }
 
-    public void gotoLoginActivity(){
-        Intent intent = new Intent(context, LoginActivity.class);
-        context.startActivity(intent);
+    public void setOnClickSaveProduct(NewArrivalAdapter.SaveProductOnClickHandler saveProductClickHandler){
+        this.saveProductClickHandler = saveProductClickHandler;
     }
+
 }

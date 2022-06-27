@@ -21,6 +21,7 @@ import com.project.read_pro.databinding.FragmentProfileBinding;
 import com.project.read_pro.model.User;
 import com.project.read_pro.storage.LoginUtils;
 import com.project.read_pro.utils.CartUtils;
+import com.project.read_pro.utils.SaveProductUtils;
 import com.project.read_pro.view.MainActivity;
 import com.project.read_pro.view_model.LogoutViewModel;
 
@@ -66,6 +67,8 @@ public class ProfileFragment extends Fragment {
         logoutViewModel.logoutUser(token).observe(getActivity(), responseBody -> {
             if(responseBody != null){
                 LoginUtils.getInstance(getActivity()).clearAll();
+                CartUtils.getInstance().clearProductInCart();
+                SaveProductUtils.getInstance().clearSaveProduct();
                 alert.dismiss();
                 Toast.makeText(getActivity(), "Logout", Toast.LENGTH_SHORT).show();
                 CartUtils.getInstance().clearProductInCart();

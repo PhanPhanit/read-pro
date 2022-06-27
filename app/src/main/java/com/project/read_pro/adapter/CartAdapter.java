@@ -73,7 +73,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             binding.itemCartInc.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
+                    int position = getBindingAdapterPosition();
                     Cart cart = carts.get(position);
                     incClickHandler.onClick(cart, position);
                 }
@@ -82,7 +82,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             binding.itemCartDec.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
+                    int position = getBindingAdapterPosition();
                     Cart cart = carts.get(position);
                     decClickHandler.onClick(cart, position);
                 }
