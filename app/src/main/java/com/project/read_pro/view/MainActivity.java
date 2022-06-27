@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.project.read_pro.Fragment.HomeFragment;
@@ -17,16 +19,23 @@ import com.project.read_pro.Fragment.SearchFragment;
 import com.project.read_pro.R;
 import com.project.read_pro.databinding.ActivityMainBinding;
 import com.project.read_pro.storage.LoginUtils;
+import com.project.read_pro.utils.CartUtils;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        binding.bnvMain.setSelectedItemId(R.id.menu_home);
+        showFragment(new HomeFragment());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         showFragment(new HomeFragment());
         BadgeDrawable badgeDrawable = binding.bnvMain.getOrCreateBadge(R.id.menu_notification);
         badgeDrawable.setVisible(true);

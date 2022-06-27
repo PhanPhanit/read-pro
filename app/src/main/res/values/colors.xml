@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#28AC61</color>
     <color name="gray">#666666</color>
+    <color name="lightweight_gray">#E0E0E0</color>
     <color name="color_button_social">#E9F7EF</color>
 
     <color name="color_primary">#28AC61</color>
@@ -26,4 +27,6 @@
 
     <color name="gray_c4c4">#C4C4C4</color>
     <color name="percent_star_active">#FA9C1C</color>
+
+    <color name="color_inc_dec">#D4EEDF</color>
 </resources>
