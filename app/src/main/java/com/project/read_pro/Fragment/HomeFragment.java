@@ -26,14 +26,18 @@ import com.project.read_pro.adapter.NewArrivalAdapter;
 import com.project.read_pro.adapter.RecommendedAdapter;
 import com.project.read_pro.databinding.FragmentHomeBinding;
 import com.project.read_pro.model.Product;
+import com.project.read_pro.model.SaveProduct;
 import com.project.read_pro.model.Slide;
+import com.project.read_pro.model.SlideProduct;
 import com.project.read_pro.response.SlideResponse;
 import com.project.read_pro.storage.LoginUtils;
 import com.project.read_pro.utils.CartUtils;
+import com.project.read_pro.utils.SaveProductUtils;
 import com.project.read_pro.view.CartActivity;
 import com.project.read_pro.view.LoginActivity;
 import com.project.read_pro.view.ProductDetailActivity;
 import com.project.read_pro.view_model.ProductViewModel;
+import com.project.read_pro.view_model.SaveProductViewModel;
 import com.project.read_pro.view_model.SlideViewModel;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -64,6 +68,8 @@ public class HomeFragment extends Fragment {
     private RecommendedAdapter recommendedAdapter;
     private List<Product> recommendedProducts;
 
+    private SaveProductViewModel saveProductViewModel;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +83,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         productViewModel = new ViewModelProvider(getActivity()).get(ProductViewModel.class);
+        saveProductViewModel = new ViewModelProvider(getActivity()).get(SaveProductViewModel.class);
         // cart init
         cartSetItemInit();
         homeFragmentInit();
@@ -199,6 +206,18 @@ public class HomeFragment extends Fragment {
                             startActivity(intent);
                         }
                     });
+
+                    newArrivalAdapter.setOnClickSaveProduct(new NewArrivalAdapter.SaveProductOnClickHandler() {
+                        @Override
+                        public void onClick(Product product, int position) {
+                            if(LoginUtils.getInstance(getActivity()).isLoggedIn()){
+                                toggleSaveProduct(product, position);
+                            }else{
+                                gotoLoginActivity();
+                            }
+                        }
+                    });
+
                 }
             });
         }else {
@@ -206,12 +225,54 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private void toggleSaveProduct(Product product, int position){
+        String token = "Bearer " + LoginUtils.getInstance(getActivity()).getUserToken();
+        if(SaveProductUtils.getInstance().isProductSaved(product)){
+            int saveProductId = SaveProductUtils.getInstance().getSaveProductId(product);
+            Toast.makeText(getContext(), "" + saveProductId, Toast.LENGTH_SHORT).show();
+            saveProductViewModel.deleteSaveProduct(token, saveProductId).observe(getActivity(), responseBody -> {
+                if(responseBody != null){
+                    SaveProductUtils.getInstance().removeSaveProduct(saveProductId);
+                    Toast.makeText(getContext(), "Remove product in save.", Toast.LENGTH_SHORT).show();
+                    newArrivalAdapter.notifyDataSetChanged();
+                }
+            });
+        }else{
+            saveProductViewModel.saveProduct(token, product.getId()).observe(getActivity(), saveProductAddResponse -> {
+                if(saveProductAddResponse != null){
+                    SaveProduct saveProduct = saveProductAddResponse.getSaveProduct();
+                    SaveProductUtils.getInstance().addSaveProduct(saveProduct);
+                    Toast.makeText(getContext(), "Save Product.", Toast.LENGTH_SHORT).show();
+                    newArrivalAdapter.notifyDataSetChanged();
+                }
+            });
+        }
+    }
+
     private void getSlides() {
         slideViewModel.getAllSlides().observe(getActivity(), new Observer<SlideResponse>() {
             @Override
             public void onChanged(SlideResponse slideResponse) {
-                List<Slide> slides = slideResponse.getSlides();
-                homeSliderAdapter.renewItems(slides);
+                if(slideResponse != null){
+                    List<Slide> slides = slideResponse.getSlides();
+                    homeSliderAdapter.renewItems(slides);
+                    homeSliderAdapter.setOnClickSlide(new HomeSliderAdapter.SlideOnClickListener() {
+                        @Override
+                        public void onClick(Slide slide, int position) {
+                            SlideProduct slideProduct = slide.getProduct();
+                            int productId = slideProduct.getProductId();
+                            productViewModel.getSingleProduct(productId).observe(getActivity(), singleProductResponse -> {
+                                if(singleProductResponse != null){
+                                    Product product = singleProductResponse.getProduct();
+                                    Intent intent = new Intent(getContext(), ProductDetailActivity.class);
+                                    // pass an object of product class
+                                    intent.putExtra(PRODUCT, product);
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+                    });
+                }
             }
         });
     }

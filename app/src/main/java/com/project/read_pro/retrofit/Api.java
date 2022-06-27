@@ -2,11 +2,13 @@ package com.project.read_pro.retrofit;
 
 import com.google.gson.JsonObject;
 import com.project.read_pro.model.Cart;
+import com.project.read_pro.repository.SingleProductResponse;
 import com.project.read_pro.response.CartAddResponse;
 import com.project.read_pro.response.CartResponse;
 import com.project.read_pro.response.LoginSignupResponse;
 import com.project.read_pro.response.ProductResponse;
 import com.project.read_pro.response.ReviewResponse;
+import com.project.read_pro.response.SaveProductAddResponse;
 import com.project.read_pro.response.SaveProductResponse;
 import com.project.read_pro.response.ShowCurrentUserResponse;
 import com.project.read_pro.response.SlideResponse;
@@ -48,6 +50,10 @@ public interface Api {
     @Headers({"Accept: application/json"})
     @GET("wsb-pro?limit=10&sort=-views")
     Call<ProductResponse> getRecommendedProduct();
+
+    @Headers({"Accept: application/json"})
+    @GET("wsb-pro/{id}")
+    Call<SingleProductResponse> getSingleProduct(@Path("id") int id);
 
     @Headers({"Accept: application/json"})
     @GET("wsb-rev/star-percent/{productId}")
@@ -96,6 +102,14 @@ public interface Api {
     @Headers({"Accept: application/json"})
     @GET("wsb-save-pro")
     Call<SaveProductResponse> getSaveProduct(@Header("authorization") String token);
+
+    @Headers({"Accept: application/json"})
+    @POST("wsb-save-pro")
+    Call<SaveProductAddResponse> saveProduct(@Header("authorization") String token, @Body JsonObject body);
+
+    @Headers({"Accept: application/json"})
+    @DELETE("wsb-save-pro/{id}")
+    Call<ResponseBody> deleteSaveProduct(@Header("authorization") String token, @Path("id") int id);
 
 
 }

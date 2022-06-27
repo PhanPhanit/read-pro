@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.project.read_pro.repository.ProductRepository;
+import com.project.read_pro.repository.SingleProductResponse;
 import com.project.read_pro.response.ProductResponse;
 
 public class ProductViewModel extends ViewModel {
@@ -21,5 +22,8 @@ public class ProductViewModel extends ViewModel {
     }
     public LiveData<ProductResponse> getRecommendedProduct(){
         return productRepository.getRecommendedProduct();
+    }
+    public LiveData<SingleProductResponse> getSingleProduct(int id){
+        return productRepository.getSingleProduct(id);
     }
 }

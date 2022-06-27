@@ -81,4 +81,25 @@ public class ProductRepository {
         return mutableLiveData;
     }
 
+    public LiveData<SingleProductResponse> getSingleProduct(int id){
+        final MutableLiveData<SingleProductResponse> mutableLiveData = new MutableLiveData<>();
+
+        RetrofitClient.getInstance().getApi().getSingleProduct(id).enqueue(new Callback<SingleProductResponse>() {
+            @Override
+            public void onResponse(Call<SingleProductResponse> call, Response<SingleProductResponse> response) {
+                Log.d(TAG, "onResponse get single: " + response.code());
+                if(response.body() != null){
+                    mutableLiveData.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SingleProductResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure get single: " + t.getMessage());
+            }
+        });
+
+        return mutableLiveData;
+    }
+
 }

@@ -22,9 +22,14 @@ public class HomeSliderAdapter extends SliderViewAdapter<HomeSliderAdapter.Slide
 
     private Context context;
     private List<Slide> mSliderItems = new ArrayList<>();
+    private HomeSliderAdapter.SlideOnClickListener slideOnClickListener;
 
     public HomeSliderAdapter(Context context){
         this.context = context;
+    }
+
+    public interface SlideOnClickListener{
+        void onClick(Slide slide, int position);
     }
 
     @Override
@@ -44,6 +49,10 @@ public class HomeSliderAdapter extends SliderViewAdapter<HomeSliderAdapter.Slide
         viewHolder.sliderTitle.setText(slide.getTitle());
         viewHolder.sliderAuthor.setText(slideProduct.getAuthor());
         //viewHolder.sliderSubtitle.setText(slide.getSubtitle());
+
+        viewHolder.itemView.setOnClickListener(view -> {
+            slideOnClickListener.onClick(slide, position);
+        });
 
 
     }
@@ -70,5 +79,9 @@ public class HomeSliderAdapter extends SliderViewAdapter<HomeSliderAdapter.Slide
             sliderAuthor = itemView.findViewById(R.id.slider_item_author);
             //sliderSubtitle = itemView.findViewById(R.id.slider_item_subtitle);
         }
+    }
+
+    public void setOnClickSlide(HomeSliderAdapter.SlideOnClickListener slideOnClickListener){
+        this.slideOnClickListener = slideOnClickListener;
     }
 }
