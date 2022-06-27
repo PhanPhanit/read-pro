@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,9 @@ import com.project.read_pro.model.Product;
 import com.project.read_pro.model.Slide;
 import com.project.read_pro.response.SlideResponse;
 import com.project.read_pro.storage.LoginUtils;
+import com.project.read_pro.utils.CartUtils;
+import com.project.read_pro.view.CartActivity;
+import com.project.read_pro.view.LoginActivity;
 import com.project.read_pro.view.ProductDetailActivity;
 import com.project.read_pro.view_model.ProductViewModel;
 import com.project.read_pro.view_model.SlideViewModel;
@@ -139,21 +143,37 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 if(LoginUtils.getInstance(getActivity()).isLoggedIn()){
                     // is login
-                    Toast.makeText(getContext(), "login", Toast.LENGTH_SHORT).show();
+                    gotoCartActivity();
                 }else{
                     // not login
-                    Toast.makeText(getContext(), "not login", Toast.LENGTH_SHORT).show();
+                    gotoLoginActivity();
                 }
             }
         });
     }
 
+    private void gotoLoginActivity(){
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        startActivity(intent);
+    }
+    private void gotoCartActivity(){
+        Intent intent = new Intent(getContext(), CartActivity.class);
+        startActivity(intent);
+    }
+
     private void cartSetItemInit() {
-        binding.cartBadgeView.setBadgeValue(0)
-                .setBadgeOvalAfterFirst(true)
+        binding.cartBadgeView.setBadgeOvalAfterFirst(true)
                 .setBadgePosition(BadgePosition.TOP_RIGHT)
                 .setShowCounter(true)
                 .setBadgePadding(4);
+
+        if(LoginUtils.getInstance(getActivity()).isLoggedIn()){
+            int countProducts = CartUtils.getInstance().countProductsInCart();
+            binding.cartBadgeView.setBadgeValue(countProducts);
+        }else{
+            binding.cartBadgeView.setBadgeValue(0);
+        }
+
     }
 
     private void setNewArrival() {

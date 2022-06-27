@@ -13,14 +13,20 @@ import android.widget.Toast;
 
 
 import com.project.read_pro.databinding.ActivityLoginBinding;
+import com.project.read_pro.model.Cart;
 import com.project.read_pro.model.User;
 import com.project.read_pro.storage.LoginUtils;
+import com.project.read_pro.utils.CartUtils;
+import com.project.read_pro.view_model.CartViewModel;
 import com.project.read_pro.view_model.LoginViewModel;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private LoginViewModel loginViewModel;
+    private CartViewModel cartViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-
+        cartViewModel = new ViewModelProvider(this).get(CartViewModel.class);
         setUpListener();
-
-
-
-
-
     }
 
     private void setUpListener() {
@@ -61,17 +62,25 @@ public class LoginActivity extends AppCompatActivity {
         }
         AlertDialog alert = createAlertDialog(this);
         loginViewModel.getLoginResponseLiveData(email, password).observe(this, loginSignupResponse -> {
-            if(!loginSignupResponse.isError()){
-                User user = loginSignupResponse.getUser();
-                String token = loginSignupResponse.getToken();
-                LoginUtils.getInstance(this).saveUserInfo(user);
-                LoginUtils.getInstance(this).saveUserToken(token);
-                Toast.makeText(this, "Login successful.", Toast.LENGTH_SHORT).show();
-                alert.dismiss();
-                gotoMainActivity();
-            }else{
-                alert.dismiss();
-                Toast.makeText(this, loginSignupResponse.getMessage(), Toast.LENGTH_SHORT).show();
+            if(loginSignupResponse != null) {
+                if (!loginSignupResponse.isError()) {
+                    User user = loginSignupResponse.getUser();
+                    String token = loginSignupResponse.getToken();
+                    LoginUtils.getInstance(this).saveUserInfo(user);
+                    LoginUtils.getInstance(this).saveUserToken(token);
+                    cartViewModel.getProductsInCart("Bearer " + token).observe(LoginActivity.this, cartResponse -> {
+                        if (cartResponse != null) {
+                            List<Cart> carts = cartResponse.getCarts();
+                            CartUtils.getInstance().setCarts(carts);
+                        }
+                        alert.dismiss();
+                        Toast.makeText(this, "Login successful.", Toast.LENGTH_SHORT).show();
+                        gotoMainActivity();
+                    });
+                } else {
+                    alert.dismiss();
+                    Toast.makeText(this, loginSignupResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -80,9 +89,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
-
     private void gotoMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

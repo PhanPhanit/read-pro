@@ -62,7 +62,7 @@
                     android:textSize="14dp" />
             </LinearLayout>
             <kr.co.prnd.readmore.ReadMoreTextView
-                android:id="@+id/rv_text"
+                android:id="@+id/rv_text_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lorem ipsum dolor sit amet consectetur adipiscing elit sed justo vivamus, quis congue est parturient tempor felis velit sem mollis."

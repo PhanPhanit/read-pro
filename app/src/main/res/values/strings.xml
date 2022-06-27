@@ -37,5 +37,11 @@
 
     <string name="loading">Loading...</string>
 
+    <!-- cart -->
+    <string name="my_cart">My Cart</string>
+    <string name="order">Order</string>
+    <string name="clear">Clear</string>
+    <string name="order_summary">Order Summary</string>
+
 
 </resources>
