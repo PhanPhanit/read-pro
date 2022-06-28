@@ -29,4 +29,6 @@
     <color name="percent_star_active">#FA9C1C</color>
 
     <color name="color_inc_dec">#D4EEDF</color>
+
+    <color name="bg_tap_layout">#ECFCF3</color>
 </resources>

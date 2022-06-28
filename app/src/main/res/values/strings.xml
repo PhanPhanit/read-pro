@@ -42,6 +42,7 @@
     <string name="order">Order</string>
     <string name="clear">Clear</string>
     <string name="order_summary">Order Summary</string>
+    <!-- TODO: Remove or change this placeholder text -->
 
 
 </resources>
