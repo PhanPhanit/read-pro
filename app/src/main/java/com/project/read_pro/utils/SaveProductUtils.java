@@ -62,4 +62,8 @@ public class SaveProductUtils {
             }
         }
     }
+
+    public int countSaveProduct(){
+        return saveProducts.size();
+    }
 }
